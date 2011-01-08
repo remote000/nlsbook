@@ -1,6 +1,6 @@
 if(debug==1)
-    [cost,grad]=ticaCost(theta,Z,P);
-    numgrad = computeNumericalGradient(@(w) ticaCost(w,Z,P),theta);
+    [cost,grad]=icaCost(theta,Z,P);
+    numgrad = computeNumericalGradient(@(w) icaCost(w,Z,P),theta);
     %disp([numgrad grad]);
     diff = norm(numgrad-grad)/norm(numgrad+grad);
     disp(diff);
