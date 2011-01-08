@@ -1,7 +1,5 @@
-function X=sampleimages
+function X=sampleimages(patchsize,sample_per_img)
     nimg=13;
-    sample_per_img=1000;
-    patchsize=32;
     nsample=nimg*sample_per_img;
     inputsize=patchsize*patchsize;
     X=zeros(inputsize,nsample);
