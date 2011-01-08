@@ -1,4 +1,4 @@
-function X=sampleimages
+function X=sampleimages(patchsize,sample_per_img
     nimg=13;
     sample_per_img=1000;
     patchsize=32;
@@ -19,5 +19,5 @@ function X=sampleimages
             X(:,id)=reshape(image(prow:prow+patchsize-1,pcol:pcol+patchsize-1),inputsize,1);
         end
     end
-    display_network(X(:,end-63,end)./128.0);
+    %display_network(X(:,end-63:end)./128.0-1);
 end

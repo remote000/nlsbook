@@ -1,0 +1,14 @@
+sample_per_img=1000;
+debug=1;
+patchsize=32;
+X=sampleimages(patchsize,sample_per_img);
+neighbourdist=2;
+fprintf('whitening input...\n');
+[Z,V]=whitening(X);
+fprintf('initializing neighbour map and initial W\n'); 
+fsize=size(Z,1);
+m=size(Z,2);
+W=rand(fsize,fsize);
+W=real((W*W')^-0.5)*W;
+P=getNeighbourMap(fsize,neighbourdist);
+theta=W(:);
