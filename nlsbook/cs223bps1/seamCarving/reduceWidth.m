@@ -6,9 +6,11 @@ function img =ReduceWidth(img_name,k)
 %OUTPUTS:
 %   img: The resized image in RGB form
 %Load in the image
+% reverse the image so that the left seam is prefered when breaking a tie.
 img=imread(img_name);
 orig_img = img;
-
+nc=size(img,2);
+img=img(:,nc:-1:1,:);
 %Create the figure
 figure(1);
 axis off;
@@ -16,13 +18,13 @@ axis off;
 for seam_num=1:k
     %imagesc(img);
     %PART A: Calculate the energy of the input image
-    G = ComputeEnergy(img); %Create this function in a different file!
+    G = computeEnergy(img); %Create this function in a different file!
     
     %PART B(i): find the lowest energy path in the image
     %pix describes the seam to be removed. It is a list of columns indices 
     %for the element that should be removed in each row of the image
-    pix = findSeam_Greedy(G); %Create this function in a different file!
-    
+    %pix = findSeam_Greedy(G); %Create this function in a different file!
+    pix = findSeam_Dyn(G);
     %Part B(ii): Comment out the above line and replace it with this:
     %pix = findSeam_Dyn(G); %Create this function in a different file!
     
@@ -32,7 +34,8 @@ for seam_num=1:k
     end
      img(:,end,:)=[];
  end
-
+nc=size(img,2);
+img=img(:,nc:-1:1,:);
 imshow([img orig_img]);
 
 end
