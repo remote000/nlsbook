@@ -1,0 +1,15 @@
+function myimg2avi(D)
+nframe=size(D,1);
+wsize=round(sqrt(size(D,2)));
+y=showfeature(D,16,0);
+for i=1:nframe
+    d=uint8(round(D(i,:)*255));
+    d=reshape(d,wsize,wsize);
+    for j=1:4
+        s=ones(wsize,wsize
+    
+    
+    mov(i)=im2frame(d,colormap(gray(256)));
+end
+%mov=struct('cdata',cdata,'colormap',{gray(256)});
+movie(mov);
