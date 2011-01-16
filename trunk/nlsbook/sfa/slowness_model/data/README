@@ -1,0 +1,20 @@
+This directory contains five frames of a video sequence recorded by
+Tobias Blaschke, Pietro Berkes, and Tiziano Zito at the Berlin zoo.
+They contain five different animals in a natural environment.
+Although our model does learn complex cells when applied to image
+sequences created from these five images, it is not recommended to use
+them to make simulations for scientific publications.
+
+A large database of natural images mantained by Hans van Hateren is
+available at http://hlab.phys.rug.nl/archive.html . Images from this
+database have been used in our simulations and in other
+publications. For a description of the database see
+van Hateren, J.H., van der Schaaf, A. (1998)
+Independent component filters of natural images compared with simple
+  cells in primary visual cortex.
+Proc.R.Soc.Lond. B 265:359-366.
+
+Another set of natural images has been made available by the ICA group
+at the Helsinki University of Technology at
+http://www.cis.hut.fi/projects/ica/data/images/ .
+

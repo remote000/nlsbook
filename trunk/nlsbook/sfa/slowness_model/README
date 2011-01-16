@@ -1,0 +1,51 @@
+*******************************************************************
+Matlab source code for the temporal slowness model of complex cells
+*******************************************************************
+
+This directory contains a user-friendly version of the Matlab source
+code of the model of self-organization of receptive fields based on
+temporal slowness described in
+ Berkes, P. and Wiskott, L. (2003). Slow feature analysis yields a
+rich repertoire of complex-cell properties. Cognitive Sciences EPrint
+Archive (CogPrint) 2804.
+
+Download
+--------
+
+The newest version of this package can be found at
+http://itb.biologie.hu-berlin.de/~berkes/software/slowness_model/
+
+Prerequisites
+-------------
+
+To use the Matlab code you need the sfa-tk v.1.0.1 library, available
+at http://itb.biologie.hu-berlin.de/~berkes/software/sfa-tk/sfa-tk.shtml .
+
+Installation
+------------
+
+To install this package, simply unpack the archive into your favorite
+Matlab directory. This is going to create a 'slowness_model'
+directory. Before you begin to use the functions, make sure that the
+'sfa_tk/sfa' and the 'sfa_tk/lcov' directories of the sfa-tk library
+are in your Matlab path.
+
+Quick start
+-----------
+
+The script start.m runs a simulation with default settings and
+displays the optimal stimuli of the resulting functions. You might
+want to edit it in order to change some of the parameters.
+
+Contact
+-------
+
+If you find a bug or have any kind of feedback please contact me at
+p.berkes@biologie.hu-berlin.de  .
+
+Directory tree
+--------------
+
+README this file
+
+data/  contains five images used as default input data.
