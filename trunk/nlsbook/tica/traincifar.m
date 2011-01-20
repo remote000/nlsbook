@@ -1,5 +1,9 @@
 %debug=1;
 %initializing;
+load class1;
+neighbourdist=2;
+fprintf('whitening input...\n');
+[Z,V]=whitening(X);
 fprintf('initializing neighbour map and initial W\n'); 
 fsize=size(Z,1);
 m=size(Z,2);
