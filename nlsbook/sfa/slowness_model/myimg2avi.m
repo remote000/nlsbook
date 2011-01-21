@@ -26,6 +26,6 @@ for i=1:nframe
     
     mov(i)=im2frame(d,colormap(gray(256)));
 end
-%movie2avi(mov,'first16.avi','fps',5);
+movie2avi(mov,'out6','colormap',gray(236),'fps',4);
 %mov=struct('cdata',cdata,'colormap',{gray(256)});
 movie(mov,1,2);

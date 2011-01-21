@@ -1,29 +1,22 @@
-% track obama's nose
-% 1, download video in mp4 format from youtube via keepVid
-% 2, convert mp4 to MJPEG by Pazera Free
-% 3, open MJPEG by VirtualDub, save it as avi
-% aviread should be able to work now.
-data=aviread('data/oba2.avi',1:300);
-%d=rgb2gray(data(1).cdata);
+data=aviread('data/actioncliptest00001.avi');
 dd=data(1).cdata;
-%dd=double(d);
-
-xrange=35:110;
-yrange=123:168;
-
+len=size(data,2);
+imshow(dd);
+[y,x]=ginput(1);
+xrange=x-8:x+8;
+yrange=y-8:y+8;
 dd(xrange(1)-1,yrange(1)-1:yrange(end)+1,:)=0;
 dd(xrange(end)+1,yrange(1)-1:yrange(end)+1,:)=0;
 dd(xrange(1)-1:xrange(end)+1,yrange(1)-1,:)=0;
 dd(xrange(1)-1:xrange(end)+1,yrange(end)+1,:)=0;
-%imshow(dd);
-%pause;
+imshow(dd);
 mov(1)=im2frame(uint8(round(dd)));
 
 dprev=dd(xrange,yrange,:);
 dprev=dprev(:);
-idx=zeros(300,1);
-idy=zeros(300,1);
-for nd=2:300
+idx=zeros(len,1);
+idy=zeros(len,1);
+for nd=2:len
     dd=data(nd).cdata;
     %dd=double(d);
     normmin=1e6;
@@ -31,7 +24,6 @@ for nd=2:300
         for j=-10:10
             dnow=dd(xrange+i,yrange+j,:);
             dnow=dnow(:);
-            %normd=norm(double(dnow)-double(dprev));
             normd=1-cormodel(double(dnow),double(dprev));
             if normd<normmin
                 normmin=normd;
@@ -52,4 +44,3 @@ for nd=2:300
     %pause;
 end
 movie2avi(mov,'track12','colormap',gray(236),'fps',12);
-%movie(mov,1,12);
