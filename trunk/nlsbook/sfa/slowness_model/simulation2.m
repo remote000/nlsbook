@@ -44,7 +44,7 @@ function hdl = simulation(input_dim, imgs, varargin),
   % input patch height and width
   ctxt.h = 16; ctxt.w = 16;
   % number of sequences, number of frames for each sequence
-  ctxt.nsequences = 200; ctxt.nframes=100;
+  ctxt.nsequences = 475; ctxt.nframes=100;
     
   % translation range
   ctxt.tr_range = 75;
@@ -81,24 +81,15 @@ function hdl = simulation(input_dim, imgs, varargin),
   % create an SFA2 object
   if ctxt.verbose, fprintf('create a new SFA object\n'); end
   hdl = sfa2_create(input_dim, ctxt.output_dim, ctxt.preprocessing);
-
+  
+  load patches100_199;
+  data2=data;
+  clear data;
   % loop over the two SFA steps
   for step_name = {'preprocessing', 'expansion'},
     % loop over all sequences
     for i=1:ctxt.nsequences,
-      % load a new image every nnextimg sequences
-      if ~(mod(i,nnextimg)-1),
-	imgnr = fix(i/nnextimg)+1;
-	if ctxt.verbose, fprintf('loading image %s\n', imgs{imgnr}); end
-	img = imread(imgs{imgnr});
-	% make sure that the images are made up of double numbers and
-        % rescale them between 0 and 1
-	img = double(img)/255.0;
-	
-	if ctxt.verbose,
-	  clf; imagesc(img); axis off; axis image; colormap(gray); drawnow;
-	end
-      end
+      
 
       % print a message every msginterval sequences
       if ~mod(i,ctxt.msginterval) & ctxt.verbose,
@@ -106,8 +97,11 @@ function hdl = simulation(input_dim, imgs, varargin),
       end
 
       % create a new image sequence
-      DATA = imgsequence(img, ctxt.h, ctxt.w, ctxt.nframes, ctxt.tr_range, ...
-			 ctxt.tr,ctxt.rt, ctxt.zm_range, ctxt.zm);
+      DATA=zeros(ctxt.nframes,ctxt.h*ctxt.w);
+      for nf=1:ctxt.nframes
+          dfrm=rgb2gray(data2{i}(nf).cdata);
+          DATA(nf,:)=double(dfrm(:))/255;
+      end
 
       % update the SFA object
       sfa_step(hdl, DATA, step_name{1});
