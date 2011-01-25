@@ -1,6 +1,6 @@
 function pieceupseq(data,ncol)
     nseq=size(data,2);
-    nrow=nseq/ncol;
+    nrow=floor(nseq/ncol);
     nframe=size(data{1},2);
     nwidth=size(data{1}(1).cdata,2);
     nheight=size(data{1}(1).cdata,1);
@@ -14,5 +14,5 @@ function pieceupseq(data,ncol)
         end
         mov(nf)=im2frame(afrm);
     end
-    movie2avi(mov,'track100_199','fps',12);
+    movie2avi(mov,'row48_001_200_track');
 end

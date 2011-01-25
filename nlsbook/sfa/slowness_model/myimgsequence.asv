@@ -1,1 +1,0 @@
-function [DATA]=imgsequence(im, h, w, nframes, trrg, trfact, rtfact, zmrg,zmfact)
