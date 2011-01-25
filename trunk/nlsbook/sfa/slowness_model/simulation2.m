@@ -37,14 +37,16 @@ function hdl = simulation(input_dim, imgs, varargin),
 %   See also: IMGSEQUENCE
   
   %%%% default values
-    
+  load 48row001_200track;
+  data2=data;
+  clear data;  
   % number of slowly varying functions to keep
   ctxt.output_dim = min(200, xp_dim(input_dim));
   
   % input patch height and width
   ctxt.h = 16; ctxt.w = 16;
   % number of sequences, number of frames for each sequence
-  ctxt.nsequences = 475; ctxt.nframes=100;
+  ctxt.nsequences = size(data2,2); ctxt.nframes=100;
     
   % translation range
   ctxt.tr_range = 75;
@@ -82,9 +84,7 @@ function hdl = simulation(input_dim, imgs, varargin),
   if ctxt.verbose, fprintf('create a new SFA object\n'); end
   hdl = sfa2_create(input_dim, ctxt.output_dim, ctxt.preprocessing);
   
-  load patches100_199;
-  data2=data;
-  clear data;
+
   % loop over the two SFA steps
   for step_name = {'preprocessing', 'expansion'},
     % loop over all sequences
