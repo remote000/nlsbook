@@ -1,6 +1,6 @@
-for nfile=1:200
-    file=['data/actioncliptest00' sprintf('%03d',nfile) '.avi'];
+for nfile=1:3
+    file=['dv/bin' sprintf('%d',nfile) '.avi'];
     fprintf('converting %s....\n',file);
-    fileout=['48row/actioncliptest00' sprintf('%03d',nfile) '.avi'];
-    resizevideo(file,48,fileout);
+    fileout=['dv/120rbin' sprintf('%d',nfile) '.avi'];
+    resizevideo2(file,120,fileout);
 end
