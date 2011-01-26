@@ -1,18 +1,17 @@
-function samplerandseq(nframe,nseq)
+function sampledvseq(nframe,nseq)
     halfwidth=8;
     seqcnt=1;
-    for nfile=1:5
-        file=['data/actioncliptest00' sprintf('%03d',nfile) '.avi'];
+    for nfile=1:3
+        file=['dv/can' sprintf('%d',nfile) '.avi'];
         movinfo=aviinfo(file);
         if movinfo.NumFrames<nframe
             continue;
         end
-        movclip=aviread(file,1:nframe);
+        movobj=mmreader(file);
     for ns=1:nseq
         %show the first frame and enter the tracking point.
         %seq=struct([]);
         fprintf('sample %s, sequence %d...\n',file,ns);
-        dd=movclip(1).cdata;
         xstart=round(movinfo.Height/4);
         xradius=round(movinfo.Height/2);
         xcenter=xstart+randi(xradius);
@@ -22,7 +21,7 @@ function samplerandseq(nframe,nseq)
         xrange=xcenter-halfwidth+1:xcenter+halfwidth;
         yrange=ycenter-halfwidth+1:ycenter+halfwidth;
         for nf=1:nframe
-            dd=movclip(nf).cdata;
+            dd=read(movobj,nf);
             
             seq(nf)=im2frame(dd(xrange,yrange,:));
         end
@@ -30,5 +29,5 @@ function samplerandseq(nframe,nseq)
         seqcnt=seqcnt+1;
     end
     end
-    save orig_001_005_notrack data;
+    save can_notrack data;
 end

@@ -14,5 +14,5 @@ function pieceupseq(data,ncol)
         end
         mov(nf)=im2frame(afrm);
     end
-    movie2avi(mov,'row48_001_200_track');
+    movie2avi(mov,'dv_50_55_notrack');
 end

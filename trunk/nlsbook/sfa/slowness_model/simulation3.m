@@ -44,7 +44,7 @@ function hdl = simulation(input_dim, imgs, varargin),
   % input patch height and width
   ctxt.h = 16; ctxt.w = 16;
   % number of sequences, number of frames for each sequence
-  ctxt.nsequences = 1000; ctxt.nframes=100;
+  ctxt.nsequences = 900; ctxt.nframes=100;
     
   % translation range
   ctxt.tr_range = 75;

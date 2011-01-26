@@ -27,9 +27,14 @@
 input_dim = 50;
 
 % filenames of the input images (black and white images only
-for fid=11:15
-    imgs{fid-10}=['data/actioncliptest000' num2str(fid) '.tif'];
+% for fid=11:15
+%     imgs{fid-10}=['data/actioncliptest000' num2str(fid) '.tif'];
+% end
+
+for fid=1:3
+    imgs{fid}=['dv/bin' sprintf('%d',fid) '.tif'];
 end
+
 %imgs = {'data/image1.tif','data/image2.tif','data/image3.tif',...
 %	'data/image4.tif','data/image5.tif'};
 
