@@ -2,7 +2,7 @@ function sampledvseq(nframe,nseq)
     halfwidth=8;
     seqcnt=1;
     for nfile=1:3
-        file=['dv/can' sprintf('%d',nfile) '.avi'];
+        file=['dv/120rcan' sprintf('%d',nfile) '.avi'];
         movinfo=aviinfo(file);
         if movinfo.NumFrames<nframe
             continue;
@@ -29,5 +29,5 @@ function sampledvseq(nframe,nseq)
         seqcnt=seqcnt+1;
     end
     end
-    save can_notrack data;
+    save can_120row_notrack data;
 end
