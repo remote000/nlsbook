@@ -24,7 +24,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % number of dimensions to be kept after PCA
-input_dim = 50;
+input_dim = 30;
 
 % filenames of the input images (black and white images only)
 imgs = {'data/image1.tif','data/image2.tif','data/image3.tif',...

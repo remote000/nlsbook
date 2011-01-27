@@ -37,7 +37,7 @@ function hdl = simulation(input_dim, imgs, varargin),
 %   See also: IMGSEQUENCE
   
   %%%% default values
-  load can_120row_notrack;
+  load can_120row_still;
   data2=data;
   clear data;  
   % number of slowly varying functions to keep
